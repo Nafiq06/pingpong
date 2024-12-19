@@ -4,14 +4,14 @@ import time
 # Create screen
 sc = turtle.Screen()
 sc.title("Pong game")
-sc.bgcolor("white")
+sc.bgcolor("black")
 sc.setup(width=1000, height=600)
 
 # Left paddle
 left_pad = turtle.Turtle()
 left_pad.speed(0)
 left_pad.shape("square")
-left_pad.color("black")
+left_pad.color("white")
 left_pad.shapesize(stretch_wid=6, stretch_len=2)
 left_pad.penup()
 left_pad.goto(-400, 0)
@@ -20,7 +20,7 @@ left_pad.goto(-400, 0)
 right_pad = turtle.Turtle()
 right_pad.speed(0)
 right_pad.shape("square")
-right_pad.color("black")
+right_pad.color("white")
 right_pad.shapesize(stretch_wid=6, stretch_len=2)
 right_pad.penup()
 right_pad.goto(400, 0)
@@ -29,7 +29,7 @@ right_pad.goto(400, 0)
 hit_ball = turtle.Turtle()
 hit_ball.speed(4)  # Adjusted speed
 hit_ball.shape("circle")
-hit_ball.color("blue")
+hit_ball.color("white")
 hit_ball.penup()
 hit_ball.goto(0, 0)
 hit_ball.dx = 5
@@ -42,7 +42,7 @@ right_player = 0
 # Displays the score
 sketch = turtle.Turtle()
 sketch.speed(0)
-sketch.color("blue")
+sketch.color("white")
 sketch.penup()
 sketch.hideturtle()
 sketch.goto(0, 260)
@@ -105,7 +105,9 @@ while True:
         hit_ball.dy *= -1
 
     if hit_ball.xcor() > 500:
+        hit_ball.hideturtle()
         hit_ball.goto(0, 0)
+        hit_ball.showturtle()
         hit_ball.dy *= -1
         left_player += 1
         sketch.clear()
@@ -114,7 +116,9 @@ while True:
             font=("Courier", 24, "normal"))
 
     if hit_ball.xcor() < -500:
+        hit_ball.hideturtle()
         hit_ball.goto(0, 0)
+        hit_ball.showturtle()
         hit_ball.dy *= -1
         right_player += 1
         sketch.clear()
